@@ -1,0 +1,17 @@
+{
+    "app": {
+        "title": "",
+        "path": ""
+    },
+    "env": {
+        "appData": "",
+        "userName": "",
+        "userProfile": "",
+        "winDir": ""
+    },
+    "reshop": {
+        "user": "",
+        "password": ""
+    },
+    "paths": []
+}
