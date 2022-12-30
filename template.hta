@@ -1,0 +1,60 @@
+<HTML>
+<HEAD>
+  <!--
+    ID                              [ STRING ]
+    APPLICATIONNAME                 [ STRING ]
+    BORDER                          [ thick | dialog | none | thin ]
+    BORDERSTYLE                     [ normal | complex | raised | static | sunken ]
+    CAPTION                         [ yes | no ]
+    CONTEXTMENU                     [ yes | no ]
+    ICON                            [ STRING ]
+    INNERBORDER                     [ yes | no ]
+    MAXIMIZEBUTTON                  [ yes | no ]
+    MINIMIZEBUTTON                  [ yes | no ]
+    NAVIGABLE                       [ yes | no ]
+    SCROLL                          [ yes | no | auto ]
+    SCROLLFLAT                      [ yes | no ]
+    SELECTION                       [ yes | no ]
+    SHOWINTASKBAR                   [ yes | no ]
+    SINGLEINSTANCE                  [ yes | no ]
+    SYSMENU                         [ yes | no ]
+    VERSION                         [ STRING ]
+    WINDOWSTATE                     [ normal | minimize | maximize ]
+  -->
+  <TITLE>RESHOP STAGE LOG</TITLE>
+    <HTA:APPLICATION ID="app"
+     APPLICATIONNAME="DB"
+     BORDER="dialog"
+     BORDERSTYLE="static"
+     CAPTION="yes"
+     ICON=""
+     INNERBORDER="no"
+     MAXIMIZEBUTTON="no"
+     MINIMIZEBUTTON="no"
+     SCROLL="no"
+     SHOWINTASKBAR="no"
+     SINGLEINSTANCE="no"
+     SYSMENU="yes"
+     VERSION="1.0"
+     WINDOWSTATE="normal"/>
+
+  <SCRIPT>
+
+  function window.onload() {
+    window.resizeTo(screen.availWidth-(screen.availWidth * 0.1), screen.availHeight-(screen.availHeight * 0.1));
+    window.moveTo((screen.availWidth * 0.1) / 2,(screen.availHeight * 0.1) / 2);
+    
+    var args = app.commandLine.split(" ");
+    
+    if (args[2] == undefined)
+      return false;
+  }
+  </SCRIPT>
+  <style>
+    
+  </style>
+</HEAD>
+<BODY>
+  
+</BODY>
+</HTML>

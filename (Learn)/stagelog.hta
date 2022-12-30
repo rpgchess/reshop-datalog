@@ -1,0 +1,115 @@
+<HTML>
+<HEAD>
+  <!--
+    ID                              [ STRING ]
+    APPLICATIONNAME                 [ STRING ]
+    BORDER                          [ thick | dialog | none | thin ]
+    BORDERSTYLE                     [ normal | complex | raised | static | sunken ]
+    CAPTION                         [ yes | no ]
+    CONTEXTMENU                     [ yes | no ]
+    ICON                            [ STRING ]
+    INNERBORDER                     [ yes | no ]
+    MAXIMIZEBUTTON                  [ yes | no ]
+    MINIMIZEBUTTON                  [ yes | no ]
+    NAVIGABLE                       [ yes | no ]
+    SCROLL                          [ yes | no | auto ]
+    SCROLLFLAT                      [ yes | no ]
+    SELECTION                       [ yes | no ]
+    SHOWINTASKBAR                   [ yes | no ]
+    SINGLEINSTANCE                  [ yes | no ]
+    SYSMENU                         [ yes | no ]
+    VERSION                         [ STRING ]
+    WINDOWSTATE                     [ normal | minimize | maximize ]
+  -->
+  <TITLE>RESHOP STAGE LOG</TITLE>
+    <HTA:APPLICATION ID="app"
+     APPLICATIONNAME="DB"
+     BORDER="dialog"
+     BORDERSTYLE="static"
+     CAPTION="yes"
+     ICON=""
+     INNERBORDER="no"
+     MAXIMIZEBUTTON="no"
+     MINIMIZEBUTTON="no"
+     SCROLL="no"
+     SHOWINTASKBAR="no"
+     SINGLEINSTANCE="no"
+     SYSMENU="yes"
+     VERSION="1.0"
+     WINDOWSTATE="normal"/>
+
+  <SCRIPT>
+
+  function window.onload() {
+    var args = app.commandLine.split(" ");
+    if (args[2] == undefined)
+      return false;
+    
+    var connection = new ActiveXObject("ADODB.Connection") ;
+    var connectionstring = "driver={sql server};server=devreshop.database.windows.net,1433;database=unicostagelogging;uid=UnicoAdm;password=Linx@r3sh0p#!";
+    
+    connection.Open(connectionstring);
+    var record = new ActiveXObject("ADODB.Recordset");
+    
+    var query = "SELECT * FROM LogInfo(NOLOCK) WHERE TransactionNumber = \'" + args[2] + "\' AND TenantId = 611 ORDER BY Datetime DESC";
+    record.Open(query, connection);
+    record.MoveFirst();
+    
+    var sRows = "";
+    
+    while(!record.eof) { //DateTime, TransactionNumber, Url, RequestContent, ResponseContent, TenantId, UserId, ClientId, TerminalCode
+      //reshop.innerText += record("DateTime") + " | " + record("Url") + " | " + record("RequestContent") + " | " + record("ResponseContent") + " | " + record("TenantId") + " | " + record("UserId") + " | " + record("ClientId") + " | " + record("TerminalCode") + "\n";
+      //.replace("http://unicostage.azurewebsites.net", "")
+      sRows += "<tr><td>" + 
+        record("TransactionNumber") + "</td><td>" + 
+        record("Url") + "</td><td>" + 
+        record("TenantId") + "</td><td>" + 
+        record("UserId") + "</td><td>" + 
+        record("TerminalCode") + "</td></tr>";
+      record.MoveNext();
+    }
+    
+    document.body.innerHTML += "<table id=table><thead><tr><th>TransactionNumber</th><th>Url</th><th>TenantId</th><th>UserId</th><th>TerminalCode</th></tr></thead><tbody>" + sRows + "</tbody></table>";
+    
+    record.close;
+    connection.close;
+    
+    window.resizeTo(screen.availWidth-(screen.availWidth * 0.1), document.getElementById("table").offsetHeight + 70);
+    window.moveTo((screen.availWidth * 0.1) / 2,(screen.availHeight - document.getElementById("table").offsetHeight) / 2);
+  }
+  </SCRIPT>
+  <style>
+    p, table {
+      font-family: Arial;
+      font-size: 9pt;
+    }
+    td {
+      text-align: center;
+      vertical-align: middle;
+    }
+    table {
+      border: 1px solid #1C6EA4;
+      width: 100%;
+      border-collapse: collapse;
+    }
+    table td, table th {
+      border: 1px solid #1C6EA4;
+      padding: 3px 2px;
+    }
+    table thead {
+      font-family: Arial;
+      background: #1C6EA4;
+      color: #FFF;
+      border-bottom: 2px solid #444444;
+    }
+    table thead th {
+      font-size: 15px;
+      font-weight: bold;
+      border-left: 2px solid #D0E4F5;
+    }
+  </style>
+</HEAD>
+<BODY>
+  <p ID=info></p>
+</BODY>
+</HTML>

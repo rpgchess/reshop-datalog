@@ -1,0 +1,82 @@
+https://www.sqlshack.com/working-sql-server-command-line-sqlcmd/
+
+-------------------------------------------------------------------------------------------------------------------------------------------
+
+var connection = new ActiveXObject("ADODB.Connection") ;
+
+//var connectionstring = "Data Source=<server>;Initial Catalog=<catalog>;User ID=<user>;Password=<password>;Provider=SQLOLEDB";
+var connectionstring = "driver={sql server};server=devreshop.database.windows.net,1433;database=unicostagelogging;uid=UnicoAdm;password=Linx@r3sh0p#!";
+
+connection.Open(connectionstring);
+var record = new ActiveXObject("ADODB.Recordset");
+
+record.Open("SELECT TOP 10 * FROM LogInfo(NOLOCK) ", connection);
+record.MoveFirecordt
+
+while(!record.eof) {
+  reshop.write(record.fields(1));
+  record.movenext;
+}
+
+record.close;
+connection.close;
+
+-------------------------------------------------------------------------------------------------------------------------------------------
+
+main();
+
+function main() {
+  DP = "SQLOLEDB";
+  DS = "devreshop.database.windows.net,1433";
+  DB = "unicostagelogging";
+  US = "UnicoAdm";
+  PW = "Linx@r3sh0p#!";
+  
+  adOpenForwardOnly = 0;
+  adLockReadOnly = 1;
+  adCmdText = 1;
+  try {
+    var objRs = new ActiveXObject("ADODB.Recordset");
+  } catch (e) {
+    alert("ADODB namespace not found.");
+    exit(0);
+  }
+
+  strConn =  "Provider="        +DP+
+            ";Initial Catalog=" +DB+
+            ";Data Source="     +DS+
+            ";User ID="         +US+
+            ";Password="        +PW+ ";"
+            //";Trusted_Connection=false"         +
+            //";MultipleActiveResultSets=true"    +
+            //";Encrypt=true"                     +
+            //";TrustServerCertificate=false;"
+            //";Integrated Security=SSPI;"
+  //strComm = "SELECT DateTime, TransactionNumber, Url, RequestContent, ResponseContent, TenantId, UserId, ClientId, TerminalCode" +
+  //          "FROM LogInfo "
+  strQuery = "SELECT TOP 10 * " +
+            "FROM LogInfo(NOLOCK) "
+
+  objRs.open(strQuery,   
+             strConn,   
+             adOpenForwardOnly,  
+             adLockReadOnly,  
+             adCmdText);
+
+  objRs.MoveFirst();
+  while (objRs.EOF != true) {
+    alert(objRs("DateTime")+"\t"  
+         +objRs("TransactionNumber")+"\t"  
+         +objRs("Url"));
+    objRs.MoveNext();
+  }
+  
+  objRs.Close  
+  objRs = null;
+}
+
+function alert(str) {
+  WScript.Echo(str);
+}
+
+-------------------------------------------------------------------------------------------------------------------------------------------
