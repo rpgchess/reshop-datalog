@@ -1,6 +1,6 @@
-[submodule "prodlog"]
+[submodule "reshop-datalog-prod"]
 	path = prodlog
 	url = https://github.com/rpgchess/reshop-datalog-prod.git
-[submodule "stagelog"]
+[submodule "reshop-datalog-stage"]
 	path = stagelog
 	url = https://github.com/rpgchess/reshop-datalog-stage.git
