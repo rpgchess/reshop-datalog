@@ -1,4 +1,5 @@
 # Maintaining
+
 ## Release Process
 Chart.js relies on [Travis CI](https://travis-ci.org/) to automate the library [releases](https://github.com/chartjs/Chart.js/releases).
 

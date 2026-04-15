@@ -161,6 +161,7 @@ options = {
     }
 };
 ```
+
 ### barThickness
 If this value is a number, it is applied to the width of each bar, in pixels. When this is enforced, `barPercentage` and `categoryPercentage` are ignored.
 
