@@ -24,6 +24,7 @@ Fornecer uma interface unificada para consulta, filtro e análise de logs do Res
 reshop-datalog/
 ├── template.hta            # Template base para dashboards
 ├── prodlog/                # Dashboard de produção
+├── foodlog/                # Dashboard de food
 ├── stagelog/               # Dashboard de stage
 ├── libs/                   # Bibliotecas externas
 │   ├── bootstrap/
@@ -36,7 +37,7 @@ reshop-datalog/
 
 ## 🔧 Funcionalidades
 
-- ✅ Dashboards separados por ambiente (Prod/Stage)
+- ✅ Dashboards separados por ambiente (Prod/Food/Stage)
 - ✅ Visualização de logs em tempo real
 - ✅ Filtros avançados de pesquisa
 - ✅ Gráficos e métricas visuais (Chart.js)
@@ -54,18 +55,20 @@ reshop-datalog/
 
 ### Execução
 
-1. Navegar para a pasta do ambiente desejado (`prodlog/` ou `stagelog/`)
+1. Navegar para a pasta do ambiente desejado (`prodlog/` ou `foodlog/` ou `stagelog/`)
 2. Abrir o arquivo `.hta` correspondente
 3. A aplicação será executada como programa desktop
 
 ## 🔐 Ambientes Disponíveis
 
 - **prodlog**: Logs do ambiente de Produção
+- **foodlog**: Logs do ambiente de Food/Alimentação
 - **stagelog**: Logs do ambiente de Stage/Homologação
 
 ## 🔗 Projetos Relacionados
 
 - [reshop-datalog-prod](../reshop-datalog-prod) - Standalone Produção
+- [reshop-datalog-food](../reshop-datalog-food) - Standalone Food
 - [reshop-datalog-stage](../reshop-datalog-stage) - Standalone Stage
 - [reshop-sprint](../reshop-sprint) - Dashboard de Sprints
 
@@ -87,5 +90,3 @@ Claudio Almeida
 Ferramenta desenvolvida para suporte interno ao projeto Reshop (Linx).
 
 ---
-
-> **Nota**: Esta é uma ferramenta interna de desenvolvimento e suporte. Não é destinada a uso externo.
